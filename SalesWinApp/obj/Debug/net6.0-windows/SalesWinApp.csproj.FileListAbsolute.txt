@@ -220,6 +220,7 @@ D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\bin\D
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\bin\Debug\net6.0-windows\DataAccess.pdb
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\bin\Debug\net6.0-windows\DataValidation.pdb
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.csproj.AssemblyReference.cache
+D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.CategoryUI.FormAddCategory.resources
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.FormLogin.resources
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.FormMain.resources
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.MemberUI.FormMemberDetails.resources
@@ -241,4 +242,3 @@ D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\D
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.pdb
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.genruntimeconfig.cache
 D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\ref\SalesWinApp.dll
-D:\FPT\PRN-211\Assignment\Repo\PRN_Assignment02_SaleManagement\SalesWinApp\obj\Debug\net6.0-windows\SalesWinApp.CategoryUI.FormAddCategory.resources

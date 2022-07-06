@@ -25,10 +25,8 @@ namespace SalesWinApp.ProductUI
         public ICartRepository CartRepository { get; init; } = new CartRepository();
 
         private BindingSource source;
-
-
-        private IEnumerable<Product> dataSource;
-        private IEnumerable<Product> searchAndApplyFilterProductResults;
+        private IEnumerable<Product> originalProductsResult;
+        private IEnumerable<Product> searchAndApplyFilterProductsResult;
 
         private readonly IMapper mapper;
         private readonly IOrderDetailRepository orderDetailRepository = new OrderDetailRepository();
@@ -204,7 +202,7 @@ namespace SalesWinApp.ProductUI
                 txtUnitPrice.DataBindings.Clear();
                 txtUnitsInStock.DataBindings.Clear();
                 source = new BindingSource();
-                source.DataSource = TransformProductToProductPresenters(dataSource);
+                source.DataSource = TransformProductToProductPresenters(originalProductsResult);
 
                 if (source.List.Count > 0)
                 {
@@ -217,8 +215,7 @@ namespace SalesWinApp.ProductUI
                 }
 
                 dataGridViewProductList.DataSource = source;
-                buttonDelete.Enabled = dataSource != null && dataSource.Any() && IsAdminLogin;
-
+                buttonDelete.Enabled = originalProductsResult != null && originalProductsResult.Any() && IsAdminLogin;
             }
             catch (Exception ex)
             {
@@ -235,8 +232,7 @@ namespace SalesWinApp.ProductUI
             {
                 productList = (from product in productList where product.UnitsInStock > 0 select product).ToList();
             }
-
-            dataSource = productList;
+            originalProductsResult = productList;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -332,7 +328,7 @@ namespace SalesWinApp.ProductUI
         private void HandleSearchByKeyword()
         {
             String keyword = textBoxSearchKeyword.Text.Trim();
-            searchAndApplyFilterProductResults = dataSource;
+            searchAndApplyFilterProductsResult = originalProductsResult;
             if (string.IsNullOrEmpty(keyword))
             {
                 return;
@@ -340,7 +336,7 @@ namespace SalesWinApp.ProductUI
 
             if (radioByName.Checked)
             {
-                searchAndApplyFilterProductResults = dataSource.Where(product => product.ProductName.ToLower().Contains(keyword.ToLower()));
+                searchAndApplyFilterProductsResult = originalProductsResult.Where(product => product.ProductName.ToLower().Contains(keyword.ToLower()));
                 return;
             }
 
@@ -353,7 +349,7 @@ namespace SalesWinApp.ProductUI
                 }
                 else
                 {
-                    searchAndApplyFilterProductResults = dataSource.Where(product => product.ProductId == productId).ToList();
+                    searchAndApplyFilterProductsResult = originalProductsResult.Where(product => product.ProductId == productId).ToList();
                 }
             }
         }
@@ -373,14 +369,14 @@ namespace SalesWinApp.ProductUI
 
                     if (isApplyMinUnitPrice)
                     {
-                        searchAndApplyFilterProductResults =
-                            searchAndApplyFilterProductResults.Where(product => product.UnitPrice >= minUnitPrice);
+                        searchAndApplyFilterProductsResult =
+                            searchAndApplyFilterProductsResult.Where(product => product.UnitPrice >= minUnitPrice);
                     }
 
                     if (isApplyMaxUnitPrice)
                     {
-                        searchAndApplyFilterProductResults =
-                            searchAndApplyFilterProductResults.Where(product => product.UnitPrice <= maxUnitPrice);
+                        searchAndApplyFilterProductsResult =
+                            searchAndApplyFilterProductsResult.Where(product => product.UnitPrice <= maxUnitPrice);
                     }
                 }
 
@@ -395,14 +391,14 @@ namespace SalesWinApp.ProductUI
 
                     if (isApplyMinUnitInStock)
                     {
-                        searchAndApplyFilterProductResults =
-                            searchAndApplyFilterProductResults.Where(product => product.UnitsInStock >= minUnitInStock);
+                        searchAndApplyFilterProductsResult =
+                            searchAndApplyFilterProductsResult.Where(product => product.UnitsInStock >= minUnitInStock);
                     }
 
                     if (isApplyMaxUnitInStock)
                     {
-                        searchAndApplyFilterProductResults =
-                            searchAndApplyFilterProductResults.Where(product => product.UnitsInStock <= maxUnitInStock);
+                        searchAndApplyFilterProductsResult =
+                            searchAndApplyFilterProductsResult.Where(product => product.UnitsInStock <= maxUnitInStock);
                     }
                 }
             }
@@ -419,9 +415,9 @@ namespace SalesWinApp.ProductUI
                 RefreshLoadFullProductList();
                 HandleSearchByKeyword();
                 HandleApplyFilterProduct();
-                if (searchAndApplyFilterProductResults.Any())
+                if (searchAndApplyFilterProductsResult.Any())
                 {
-                    dataSource = searchAndApplyFilterProductResults;
+                    originalProductsResult = searchAndApplyFilterProductsResult;
                     RefreshBiddingProductListDisplay();
                 }
                 else
@@ -496,8 +492,7 @@ namespace SalesWinApp.ProductUI
                 MessageBox.Show(ex.Message, @"Get Product Detail", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
+        
         private void buttonClearSearch_Click(object sender, EventArgs e) => ClearSearch();
 
         private void buttonViewCart_Click(object sender, EventArgs e) => ViewCart();

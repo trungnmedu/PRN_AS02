@@ -105,19 +105,19 @@ namespace SalesWinApp.OrderUI
 
         private void menuMemberMng_Click(object sender, EventArgs e)
         {
-            FormMembersManagement frmMemberManagement = new FormMembersManagement
+            FormMembersManagement formMembersManagement = new FormMembersManagement
             {
                 LoginMember = IsMemberLogin ? MemberLogin : null,
                 IsAdminLogin = IsAdminLogin,
                 IsMemberLogin = IsMemberLogin,
             };
-            frmMemberManagement.Closed += (_, _) => Close();
+            formMembersManagement.Closed += (_, _) => Close();
             Hide();
-            frmMemberManagement.Show();
+            formMembersManagement.Show();
         }
         private void menuProductMng_Click(object sender, EventArgs e)
         {
-            FormProductsManagement frmProductsManagement = new FormProductsManagement
+            FormProductsManagement formProductsManagement = new FormProductsManagement
             {
                 MemberRepository = MemberRepository,
                 CartRepository = CartRepository,
@@ -125,15 +125,15 @@ namespace SalesWinApp.OrderUI
                 IsMemberLogin = IsMemberLogin,
                 MemberLogin = IsMemberLogin ? MemberLogin : null,
             };
-            frmProductsManagement.Closed += (_, _) => Close();
+            formProductsManagement.Closed += (_, _) => Close();
             Hide();
-            frmProductsManagement.Show();
+            formProductsManagement.Show();
         }
         private void menuExit_Click(object sender, EventArgs e) => Close();
 
         private void menuOrder_Click(object sender, EventArgs e)
         {
-            FormProductsManagement frmProductsManagement = new FormProductsManagement
+            FormProductsManagement formProductsManagement = new FormProductsManagement
             {
                 IsAdminLogin = IsAdminLogin,
                 IsMemberLogin = IsMemberLogin,
@@ -141,13 +141,13 @@ namespace SalesWinApp.OrderUI
                 MemberRepository = MemberRepository,
                 CartRepository = CartRepository
             };
-            frmProductsManagement.Closed += (_, _) => Close();
+            formProductsManagement.Closed += (_, _) => Close();
             Hide();
-            frmProductsManagement.Show();
+            formProductsManagement.Show();
         }
         private void menuProfile_Click(object sender, EventArgs e)
         {
-            FormMemberDetails frmMemberDetails = new FormMemberDetails
+            FormMemberDetails formMemberDetails = new FormMemberDetails
             {
                 Text = @"Member Details",
                 MemberInfo = IsMemberLogin ? MemberLogin : null,
@@ -157,9 +157,9 @@ namespace SalesWinApp.OrderUI
                 MemberRepository = MemberRepository,
                 CartRepository = CartRepository
             };
-            frmMemberDetails.Closed += (_, _) => Close();
+            formMemberDetails.Closed += (_, _) => Close();
             Hide();
-            frmMemberDetails.Show();
+            formMemberDetails.Show();
         }
 
         private void LoadOrder()

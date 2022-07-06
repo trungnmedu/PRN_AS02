@@ -48,9 +48,9 @@ namespace SalesWinApp.MemberUI
             this.lbSearch = new System.Windows.Forms.Label();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.lbSearchCountry = new System.Windows.Forms.Label();
-            this.cboCountry = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilterCountry = new System.Windows.Forms.ComboBox();
             this.lbSearchCity = new System.Windows.Forms.Label();
-            this.cboSearchCity = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilterCity = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.grSearch = new System.Windows.Forms.GroupBox();
             this.radioByName = new System.Windows.Forms.RadioButton();
@@ -242,14 +242,15 @@ namespace SalesWinApp.MemberUI
             this.lbSearchCountry.TabIndex = 18;
             this.lbSearchCountry.Text = "Country";
             // 
-            // cboCountry
+            // comboBoxFilterCountry
             // 
-            this.cboCountry.Location = new System.Drawing.Point(88, 24);
-            this.cboCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboCountry.Name = "cboCountry";
-            this.cboCountry.Size = new System.Drawing.Size(188, 28);
-            this.cboCountry.TabIndex = 0;
-            this.cboCountry.SelectedIndexChanged += new System.EventHandler(this.cboCountry_SelectedIndexChanged);
+            this.comboBoxFilterCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFilterCountry.Location = new System.Drawing.Point(88, 24);
+            this.comboBoxFilterCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxFilterCountry.Name = "comboBoxFilterCountry";
+            this.comboBoxFilterCountry.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxFilterCountry.TabIndex = 0;
+            this.comboBoxFilterCountry.SelectedIndexChanged += new System.EventHandler(this.cboCountry_SelectedIndexChanged);
             // 
             // lbSearchCity
             // 
@@ -260,14 +261,15 @@ namespace SalesWinApp.MemberUI
             this.lbSearchCity.TabIndex = 19;
             this.lbSearchCity.Text = "City";
             // 
-            // cboSearchCity
+            // comboBoxFilterCity
             // 
-            this.cboSearchCity.Location = new System.Drawing.Point(88, 71);
-            this.cboSearchCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboSearchCity.Name = "cboSearchCity";
-            this.cboSearchCity.Size = new System.Drawing.Size(188, 28);
-            this.cboSearchCity.TabIndex = 20;
-            this.cboSearchCity.SelectedIndexChanged += new System.EventHandler(this.cboSearchCity_SelectedIndexChanged);
+            this.comboBoxFilterCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFilterCity.Location = new System.Drawing.Point(88, 71);
+            this.comboBoxFilterCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxFilterCity.Name = "comboBoxFilterCity";
+            this.comboBoxFilterCity.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxFilterCity.TabIndex = 20;
+            this.comboBoxFilterCity.SelectedIndexChanged += new System.EventHandler(this.cboSearchCity_SelectedIndexChanged);
             // 
             // btnSearch
             // 
@@ -323,9 +325,9 @@ namespace SalesWinApp.MemberUI
             // 
             // grFilter
             // 
-            this.grFilter.Controls.Add(this.cboSearchCity);
+            this.grFilter.Controls.Add(this.comboBoxFilterCity);
             this.grFilter.Controls.Add(this.lbSearchCity);
-            this.grFilter.Controls.Add(this.cboCountry);
+            this.grFilter.Controls.Add(this.comboBoxFilterCountry);
             this.grFilter.Controls.Add(this.lbSearchCountry);
             this.grFilter.Location = new System.Drawing.Point(707, 278);
             this.grFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -424,9 +426,9 @@ namespace SalesWinApp.MemberUI
         private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.TextBox txtSearchValue;
         private System.Windows.Forms.Label lbSearchCountry;
-        private System.Windows.Forms.ComboBox cboCountry;
+        private System.Windows.Forms.ComboBox comboBoxFilterCountry;
         private System.Windows.Forms.Label lbSearchCity;
-        private System.Windows.Forms.ComboBox cboSearchCity;
+        private System.Windows.Forms.ComboBox comboBoxFilterCity;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.GroupBox grSearch;
         private System.Windows.Forms.RadioButton radioByID;

@@ -11,7 +11,7 @@ namespace DataAccess.Repository.MemberRepo
         public Member Login(string email, string password);
         public void AddMember(Member member);
         public void UpdateMember(Member member);
-        public void DeleteMember(int MemberID);
+        public void DeleteMember(int memberId);
         public Member GetMember(int memberId);
         public Member GetMember(string email);
         public IEnumerable<Member> SearchMember(string name);

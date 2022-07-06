@@ -9,8 +9,9 @@ namespace SalesWinApp.OrderUI
 {
     public partial class FormViewCartDetails : Form
     {
-        public ICartRepository  CartRepository { get; init; }
+        public ICartRepository CartRepository { get; init; }
         public CartPresenter CartPresenter { get; init; }
+
         public FormViewCartDetails()
         {
             InitializeComponent();
@@ -27,12 +28,11 @@ namespace SalesWinApp.OrderUI
                 numUnitPrice.Value = CartPresenter.Price;
                 numQuantity.Value = CartPresenter.Quantity;
                 txtTotal.Text = CartPresenter.Total.ToString(CultureInfo.CurrentCulture);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"View Cart Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -42,12 +42,13 @@ namespace SalesWinApp.OrderUI
                 IProductRepository productRepository = new ProductRepository();
                 int productId = productRepository.GetProduct(CartPresenter.ProductName).ProductId;
                 CartRepository.UpdateCart(productId, Convert.ToInt32(numQuantity.Value), numUnitPrice.Value);
-                MessageBox.Show(@"Update successfully!", @"Update Cart Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } catch (Exception ex)
+                MessageBox.Show(@"Update successfully!", @"Update Cart Item", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"Update Cart Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         private void btnCancel_Click(object sender, EventArgs e) => Close();
