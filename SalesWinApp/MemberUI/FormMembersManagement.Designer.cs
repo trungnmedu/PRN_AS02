@@ -119,7 +119,7 @@ namespace SalesWinApp.MemberUI
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(581, 61);
+            this.lbPassword.Location = new System.Drawing.Point(716, 61);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(70, 20);
             this.lbPassword.TabIndex = 6;
@@ -127,7 +127,7 @@ namespace SalesWinApp.MemberUI
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(657, 57);
+            this.txtPassword.Location = new System.Drawing.Point(792, 57);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -137,7 +137,7 @@ namespace SalesWinApp.MemberUI
             // lbCity
             // 
             this.lbCity.AutoSize = true;
-            this.lbCity.Location = new System.Drawing.Point(581, 116);
+            this.lbCity.Location = new System.Drawing.Point(716, 116);
             this.lbCity.Name = "lbCity";
             this.lbCity.Size = new System.Drawing.Size(34, 20);
             this.lbCity.TabIndex = 8;
@@ -145,7 +145,7 @@ namespace SalesWinApp.MemberUI
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(657, 112);
+            this.txtCity.Location = new System.Drawing.Point(792, 112);
             this.txtCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(303, 27);
@@ -154,7 +154,7 @@ namespace SalesWinApp.MemberUI
             // lbCountry
             // 
             this.lbCountry.AutoSize = true;
-            this.lbCountry.Location = new System.Drawing.Point(581, 171);
+            this.lbCountry.Location = new System.Drawing.Point(716, 171);
             this.lbCountry.Name = "lbCountry";
             this.lbCountry.Size = new System.Drawing.Size(60, 20);
             this.lbCountry.TabIndex = 10;
@@ -162,7 +162,7 @@ namespace SalesWinApp.MemberUI
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(657, 167);
+            this.txtCountry.Location = new System.Drawing.Point(792, 167);
             this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(303, 27);
@@ -170,7 +170,7 @@ namespace SalesWinApp.MemberUI
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(30, 405);
+            this.btnLoad.Location = new System.Drawing.Point(8, 405);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(125, 31);
@@ -181,7 +181,7 @@ namespace SalesWinApp.MemberUI
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(489, 405);
+            this.btnNew.Location = new System.Drawing.Point(506, 405);
             this.btnNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(125, 31);
@@ -192,7 +192,7 @@ namespace SalesWinApp.MemberUI
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(879, 405);
+            this.btnDelete.Location = new System.Drawing.Point(1057, 405);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(125, 31);
@@ -212,7 +212,7 @@ namespace SalesWinApp.MemberUI
             this.dgvMemberList.RowHeadersWidth = 51;
             this.dgvMemberList.RowTemplate.Height = 25;
             this.dgvMemberList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMemberList.Size = new System.Drawing.Size(996, 344);
+            this.dgvMemberList.Size = new System.Drawing.Size(1174, 344);
             this.dgvMemberList.TabIndex = 15;
             this.dgvMemberList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMemberList_CellDoubleClick);
             // 
@@ -236,7 +236,7 @@ namespace SalesWinApp.MemberUI
             // lbSearchCountry
             // 
             this.lbSearchCountry.AutoSize = true;
-            this.lbSearchCountry.Location = new System.Drawing.Point(6, 27);
+            this.lbSearchCountry.Location = new System.Drawing.Point(44, 30);
             this.lbSearchCountry.Name = "lbSearchCountry";
             this.lbSearchCountry.Size = new System.Drawing.Size(60, 20);
             this.lbSearchCountry.TabIndex = 18;
@@ -245,17 +245,17 @@ namespace SalesWinApp.MemberUI
             // comboBoxFilterCountry
             // 
             this.comboBoxFilterCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFilterCountry.Location = new System.Drawing.Point(88, 24);
+            this.comboBoxFilterCountry.Location = new System.Drawing.Point(142, 25);
             this.comboBoxFilterCountry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxFilterCountry.Name = "comboBoxFilterCountry";
-            this.comboBoxFilterCountry.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxFilterCountry.Size = new System.Drawing.Size(285, 28);
             this.comboBoxFilterCountry.TabIndex = 0;
             this.comboBoxFilterCountry.SelectedIndexChanged += new System.EventHandler(this.cboCountry_SelectedIndexChanged);
             // 
             // lbSearchCity
             // 
             this.lbSearchCity.AutoSize = true;
-            this.lbSearchCity.Location = new System.Drawing.Point(6, 74);
+            this.lbSearchCity.Location = new System.Drawing.Point(44, 77);
             this.lbSearchCity.Name = "lbSearchCity";
             this.lbSearchCity.Size = new System.Drawing.Size(34, 20);
             this.lbSearchCity.TabIndex = 19;
@@ -264,10 +264,10 @@ namespace SalesWinApp.MemberUI
             // comboBoxFilterCity
             // 
             this.comboBoxFilterCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFilterCity.Location = new System.Drawing.Point(88, 71);
+            this.comboBoxFilterCity.Location = new System.Drawing.Point(142, 72);
             this.comboBoxFilterCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxFilterCity.Name = "comboBoxFilterCity";
-            this.comboBoxFilterCity.Size = new System.Drawing.Size(188, 28);
+            this.comboBoxFilterCity.Size = new System.Drawing.Size(285, 28);
             this.comboBoxFilterCity.TabIndex = 20;
             this.comboBoxFilterCity.SelectedIndexChanged += new System.EventHandler(this.cboSearchCity_SelectedIndexChanged);
             // 
@@ -289,11 +289,11 @@ namespace SalesWinApp.MemberUI
             this.grSearch.Controls.Add(this.txtSearchValue);
             this.grSearch.Controls.Add(this.btnSearch);
             this.grSearch.Controls.Add(this.lbSearch);
-            this.grSearch.Location = new System.Drawing.Point(30, 271);
+            this.grSearch.Location = new System.Drawing.Point(12, 271);
             this.grSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grSearch.Name = "grSearch";
             this.grSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grSearch.Size = new System.Drawing.Size(619, 119);
+            this.grSearch.Size = new System.Drawing.Size(637, 119);
             this.grSearch.TabIndex = 22;
             this.grSearch.TabStop = false;
             this.grSearch.Text = "Search";
@@ -333,7 +333,7 @@ namespace SalesWinApp.MemberUI
             this.grFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grFilter.Name = "grFilter";
             this.grFilter.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grFilter.Size = new System.Drawing.Size(297, 112);
+            this.grFilter.Size = new System.Drawing.Size(475, 112);
             this.grFilter.TabIndex = 23;
             this.grFilter.TabStop = false;
             this.grFilter.Text = "Filter";
@@ -369,7 +369,7 @@ namespace SalesWinApp.MemberUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 809);
+            this.ClientSize = new System.Drawing.Size(1194, 809);
             this.Controls.Add(this.lbCompanyName);
             this.Controls.Add(this.grFilter);
             this.Controls.Add(this.grSearch);

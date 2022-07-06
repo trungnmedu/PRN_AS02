@@ -158,7 +158,7 @@ namespace SalesWinApp.MemberUI
                     txtPassword.DataBindings.Clear();
                     txtCity.DataBindings.Clear();
                     txtCountry.DataBindings.Clear();
-                    
+
                     txtMemberID.DataBindings.Add("Text", membersBindingSource, "MemberId");
                     txtMemberName.DataBindings.Add("Text", membersBindingSource, "Fullname");
                     txtEmail.DataBindings.Add("Text", membersBindingSource, "Email");
@@ -166,7 +166,7 @@ namespace SalesWinApp.MemberUI
                     txtPassword.DataBindings.Add("Text", membersBindingSource, "Password");
                     txtCity.DataBindings.Add("Text", membersBindingSource, "City");
                     txtCountry.DataBindings.Add("Text", membersBindingSource, "Country");
-                    
+
                     dgvMemberList.DataSource = membersBindingSource;
                     btnDelete.Enabled = membersBindingSource.Count > 0;
                 }
@@ -198,20 +198,20 @@ namespace SalesWinApp.MemberUI
                 comboBoxFilterCountry.DataSource = null;
                 return;
             }
-            
+
             cityFilter = new BindingSource();
             List<String> listCityFilterValue = originalMembersResult.Select(member => member.City).Distinct().ToList();
             listCityFilterValue.Insert(0, "");
             cityFilter.DataSource = listCityFilterValue;
             comboBoxFilterCity.DataSource = cityFilter;
-                
+
             countryFilter = new BindingSource();
             List<String> listCountryFilterValue = originalMembersResult.Select(member => member.Country).Distinct().ToList();
             listCountryFilterValue.Insert(0, "");
             countryFilter.DataSource = listCountryFilterValue;
             comboBoxFilterCountry.DataSource = countryFilter;
         }
-        
+
         private void DeleteOrderAndOrderDetailsActionAfterDeletedMemberByMemberId(int memberId)
         {
             IEnumerable<Order> orders = orderRepository.GetAllOrder().Where(order => order.MemberId == memberId);
@@ -220,7 +220,7 @@ namespace SalesWinApp.MemberUI
                 orderDetailRepository.DeleteOrderDetails(order.OrderId);
                 orderRepository.DeleteOrder(order.OrderId);
             }
-            
+
             LoadFullListMembers();
             RefreshBiddingMemberListDisplay();
             ExtractAndBindingMemberFilter();
@@ -261,7 +261,7 @@ namespace SalesWinApp.MemberUI
             {
                 MemberPresenter currentMemberDetails = GetCurrentMemberDetails();
                 Member member = mapper.Map<MemberPresenter, Member>(currentMemberDetails);
-                String textConfirmBeforeDeleteAction = $@"Do you really want to delete the member" + 
+                String textConfirmBeforeDeleteAction = $@"Do you really want to delete the member" +
                                                        Environment.NewLine + $@"Member ID: {member.MemberId}" +
                                                        Environment.NewLine + $@"Member Name: {member.Fullname}" +
                                                        Environment.NewLine + $@"Email: {member.Email}" +
@@ -355,7 +355,7 @@ namespace SalesWinApp.MemberUI
 
             IEnumerable<MemberPresenter> searchAndApplyFilterMembersResultClone =
                 searchAndApplyFilterMembersResult.Where(member => member.Country.Equals(currentSelectedCountry));
-            
+
         }
 
         private void handleApplyFilterMembers()
@@ -399,7 +399,7 @@ namespace SalesWinApp.MemberUI
         {
             handleSearchAndApplyFilterMembers();
         }
-        
+
         private void cboSearchCity_SelectedIndexChanged(object sender, EventArgs e)
         {
             handleSearchAndApplyFilterMembers();

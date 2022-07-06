@@ -40,7 +40,7 @@ namespace SalesWinApp.ProductUI
 
         private IEnumerable<ProductPresenter> TransformProductToProductPresenters(IEnumerable<Product> listProducts)
         {
-            return listProducts.Select(product => mapper.Map<Product, ProductPresenter>(product));
+            return listProducts.Select(product => mapper.Map<Product, ProductPresenter>(product)).ToList();
         }
 
         private void AddAdminMenu(MenuStrip mainMenu)
@@ -204,7 +204,7 @@ namespace SalesWinApp.ProductUI
                 source = new BindingSource();
                 source.DataSource = TransformProductToProductPresenters(originalProductsResult);
 
-                if (source.List.Count > 0)
+                if (source.Count > 0)
                 {
                     txtProductID.DataBindings.Add("Text", source, "ProductId");
                     txtProductName.DataBindings.Add("Text", source, "ProductName");
@@ -212,6 +212,11 @@ namespace SalesWinApp.ProductUI
                     txtWeight.DataBindings.Add("Text", source, "Weight");
                     txtUnitPrice.DataBindings.Add("Text", source, "UnitPrice");
                     txtUnitsInStock.DataBindings.Add("Text", source, "UnitsInStock");
+                    dataGridViewProductList.Enabled = true;
+                }
+                else
+                {
+                    dataGridViewProductList.Enabled = false;
                 }
 
                 dataGridViewProductList.DataSource = source;
@@ -253,7 +258,7 @@ namespace SalesWinApp.ProductUI
             {
                 if (IsAdminLogin)
                 {
-                    FormProductDetail frmProductDetail = new FormProductDetail
+                    FormProductDetail formProductDetail = new FormProductDetail
                     {
                         ProductRepository = this.productRepository,
                         InsertOrUpdate = true,
@@ -263,7 +268,7 @@ namespace SalesWinApp.ProductUI
                         Text = @"Add new Product"
                     };
 
-                    if (frmProductDetail.ShowDialog() == DialogResult.OK)
+                    if (formProductDetail.ShowDialog() == DialogResult.OK)
                     {
                         RefreshLoadFullProductList();
                         RefreshBiddingProductListDisplay();
@@ -448,6 +453,7 @@ namespace SalesWinApp.ProductUI
         {
             try
             {
+
                 if (IsAdminLogin)
                 {
                     ProductPresenter productPresenter = GetCurrentProductInfo();
@@ -455,6 +461,8 @@ namespace SalesWinApp.ProductUI
                     FormProductDetail formProductDetail = new FormProductDetail
                     {
                         LoginMember = this.MemberLogin,
+                        IsAdminLogin = IsAdminLogin,
+                        IsMemberLogin = IsMemberLogin,
                         ProductRepository = this.productRepository,
                         InsertOrUpdate = false,
                         ProductInfo = productPresenter,
@@ -466,21 +474,24 @@ namespace SalesWinApp.ProductUI
                         RefreshLoadFullProductList();
                         RefreshBiddingProductListDisplay();
                     }
+                    return;
                 }
-                if(IsMemberLogin)
+                if (IsMemberLogin)
                 {
                     ProductPresenter productPresenter = GetCurrentProductInfo();
-                    FormProductDetail frmProductDetail = new FormProductDetail
+                    FormProductDetail formProductDetail = new FormProductDetail
                     {
                         ProductRepository = this.productRepository,
                         InsertOrUpdate = false,
                         ProductInfo = productPresenter,
+                        IsAdminLogin = IsAdminLogin,
+                        IsMemberLogin = IsMemberLogin,
                         LoginMember = this.MemberLogin,
                         CartRepository = this.CartRepository,
                         Text = @"Add To Cart"
                     };
 
-                    if (frmProductDetail.ShowDialog() == DialogResult.OK)
+                    if (formProductDetail.ShowDialog() == DialogResult.OK)
                     {
                         RefreshLoadFullProductList();
                         RefreshBiddingProductListDisplay();
@@ -492,7 +503,7 @@ namespace SalesWinApp.ProductUI
                 MessageBox.Show(ex.Message, @"Get Product Detail", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void buttonClearSearch_Click(object sender, EventArgs e) => ClearSearch();
 
         private void buttonViewCart_Click(object sender, EventArgs e) => ViewCart();

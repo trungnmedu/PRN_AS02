@@ -82,7 +82,6 @@ namespace SalesWinApp.ProductUI
                         numUnitsInStock.Value = ProductInfo.UnitsInStock;
                         cboCategory_LoadDataSource();
                         cboCategory.SelectedIndex = cboCategory.FindStringExact(ProductInfo.CategoryName);
-
                     }
                 }
                 else
