@@ -88,7 +88,7 @@ namespace DataAccess.DAO
         {
             try
             {
-               return new SalesManagementContext().Members.SingleOrDefault(mem => mem.Email.Equals(memberEmail));
+               return new SalesManagementContext().Members.SingleOrDefault(mem => mem.Email.ToLower().Equals(memberEmail.ToLower()));
             }
             catch (Exception ex)
             {
@@ -141,16 +141,23 @@ namespace DataAccess.DAO
             }
             try
             {
-                Member memberByMemberId = GetMemberByMemberId(member.MemberId);
-                if (memberByMemberId != null)
+                Member memberExistByMemberId = GetMemberByMemberId(member.MemberId);
+                if (memberExistByMemberId == null)
                 {
-                    var context = new SalesManagementContext();
-                    context.Members.Update(member);
-                    context.SaveChanges();
+                    throw new Exception("Member does not exist!!");
+                }
+
+                Member memberExistByEmail = GetMemberByEmail(member.Email);
+                if (memberExistByEmail == null || memberExistByEmail.MemberId == memberExistByMemberId.MemberId)
+                {
+                    SalesManagementContext salesManagementContext =  new SalesManagementContext();
+                    salesManagementContext.Members.Update(member);
+                    salesManagementContext.SaveChanges();
+                    return;
                 }
                 else
                 {
-                    throw new Exception("Member does not exist!!");
+                    throw new Exception("Email already user by another account.");
                 }
             }
             catch (Exception ex)

@@ -154,20 +154,30 @@ namespace SalesWinApp.MemberUI
             }
         }
 
+        private void ClearCurrentMemberDisplay()
+        {
+            txtMemberID.DataBindings.Clear();
+            txtMemberID.Clear();
+            txtMemberName.DataBindings.Clear();
+            txtMemberName.Clear();
+            txtEmail.DataBindings.Clear();
+            txtEmail.Clear();
+            txtCompanyName.DataBindings.Clear();
+            txtCompanyName.Clear();
+            txtPassword.DataBindings.Clear();
+            txtPassword.Clear();
+            txtCity.DataBindings.Clear();
+            txtCity.Clear();
+            txtCountry.DataBindings.Clear();
+            txtCountry.Clear();
+        }
         private void RefreshBiddingMemberListDisplay()
         {
             try
             {
+                ClearCurrentMemberDisplay();
                 if (membersBindingSource?.Count > 0)
                 {
-                    txtMemberID.DataBindings.Clear();
-                    txtMemberName.DataBindings.Clear();
-                    txtEmail.DataBindings.Clear();
-                    txtCompanyName.DataBindings.Clear();
-                    txtPassword.DataBindings.Clear();
-                    txtCity.DataBindings.Clear();
-                    txtCountry.DataBindings.Clear();
-
                     txtMemberID.DataBindings.Add("Text", membersBindingSource, "MemberId");
                     txtMemberName.DataBindings.Add("Text", membersBindingSource, "Fullname");
                     txtEmail.DataBindings.Add("Text", membersBindingSource, "Email");
@@ -177,7 +187,14 @@ namespace SalesWinApp.MemberUI
                     txtCountry.DataBindings.Add("Text", membersBindingSource, "Country");
 
                     dgvMemberList.DataSource = membersBindingSource;
-                    btnDelete.Enabled = membersBindingSource.Count > 0;
+                    dgvMemberList.Enabled = true;
+                    btnDelete.Enabled = true;
+                }
+                else
+                {
+                    dgvMemberList.DataSource = null;
+                    dgvMemberList.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -191,10 +208,17 @@ namespace SalesWinApp.MemberUI
             IEnumerable<MemberPresenter> members = memberRepository.GetMembersList()
                 .Select(member => mapper.Map<Member, MemberPresenter>(member)).ToList();
             originalMembersResult = members;
+            membersBindingSource = new BindingSource();
+            membersBindingSource.DataSource = members;
             if (members.Any())
             {
                 grFilter.Enabled = true;
                 grSearch.Enabled = true;
+            }
+            else
+            {
+                grFilter.Enabled = false;
+                grSearch.Enabled = false; 
             }
         }
 
@@ -229,10 +253,6 @@ namespace SalesWinApp.MemberUI
                 orderDetailRepository.DeleteOrderDetails(order.OrderId);
                 orderRepository.DeleteOrder(order.OrderId);
             }
-
-            LoadFullListMembers();
-            RefreshBiddingMemberListDisplay();
-            ExtractAndBindingMemberFilter();
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -244,6 +264,7 @@ namespace SalesWinApp.MemberUI
             grFilter.Enabled = true;
             LoadFullListMembers();
             RefreshBiddingMemberListDisplay();
+            ExtractAndBindingMemberFilter();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -282,7 +303,9 @@ namespace SalesWinApp.MemberUI
                 {
                     DeleteOrderAndOrderDetailsActionAfterDeletedMemberByMemberId(member.MemberId);
                     memberRepository.DeleteMember(member.MemberId);
+                    LoadFullListMembers();
                     RefreshBiddingMemberListDisplay();
+                    ExtractAndBindingMemberFilter();
                 }
             }
             catch (Exception ex)
@@ -306,6 +329,7 @@ namespace SalesWinApp.MemberUI
             {
                 LoadFullListMembers();
                 RefreshBiddingMemberListDisplay();
+                ExtractAndBindingMemberFilter();
                 membersBindingSource.Position = membersBindingSource.Count - 1;
             }
         }
@@ -373,6 +397,10 @@ namespace SalesWinApp.MemberUI
             try
             {
                 LoadFullListMembers();
+                if (!originalMembersResult.Any())
+                {
+                    return;
+                }
                 handleSearchMembersByKeyword();
                 handleApplyFilterMembers();
                 if (searchAndApplyFilterMembersResult.Any())
