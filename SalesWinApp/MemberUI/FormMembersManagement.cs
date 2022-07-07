@@ -348,9 +348,7 @@ namespace SalesWinApp.MemberUI
             {
                 return;
             }
-
-            searchAndApplyFilterMembersResult =
-                searchAndApplyFilterMembersResult.Where(member => member.City.Equals(currentSelectedCity));
+            searchAndApplyFilterMembersResult =  searchAndApplyFilterMembersResult.Where(member => member.City.Equals(currentSelectedCity));
         }
 
         private void handleApplyFilterMembersByCountry()
@@ -361,10 +359,7 @@ namespace SalesWinApp.MemberUI
             {
                 return;
             }
-
-            IEnumerable<MemberPresenter> searchAndApplyFilterMembersResultClone =
-                searchAndApplyFilterMembersResult.Where(member => member.Country.Equals(currentSelectedCountry));
-
+            searchAndApplyFilterMembersResult = searchAndApplyFilterMembersResult.Where(member => member.Country.Equals(currentSelectedCountry));
         }
 
         private void handleApplyFilterMembers()
