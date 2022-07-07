@@ -72,23 +72,32 @@ namespace SalesWinApp.MemberUI
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
         {
-            btnDelete.Enabled = false;
-            txtMemberID.Enabled = false;
-            txtMemberName.Enabled = false;
-            txtEmail.Enabled = false;
-            txtCompanyName.Enabled = false;
-            txtPassword.Enabled = false;
-            txtCity.Enabled = false;
-            txtCountry.Enabled = false;
-            btnNew.Enabled = false;
-            dgvMemberList.Enabled = false;
-            btnLoad.Enabled = true;
-            grSearch.Enabled = false;
-            grFilter.Enabled = false;
-            CreateMainMenu();
-            LoadFullListMembers();
-            RefreshBiddingMemberListDisplay();
-            ExtractAndBindingMemberFilter();
+            try
+            {
+                btnDelete.Enabled = false;
+                txtMemberID.Enabled = false;
+                txtMemberName.Enabled = false;
+                txtEmail.Enabled = false;
+                txtCompanyName.Enabled = false;
+                txtPassword.Enabled = false;
+                txtCity.Enabled = false;
+                txtCountry.Enabled = false;
+                btnNew.Enabled = true;
+                dgvMemberList.Enabled = false;
+                btnLoad.Enabled = true;
+                grSearch.Enabled = false;
+                grFilter.Enabled = false;
+                CreateMainMenu();
+                LoadFullListMembers();
+                RefreshBiddingMemberListDisplay();
+                ExtractAndBindingMemberFilter();
+            }
+            catch (Exception exception)
+            {
+                btnNew.Enabled = false;
+                MessageBox.Show(exception.Message, @"Member Management");
+            }
+
         }
 
         private void menuExit_Click(object sender, EventArgs e) => Close();
