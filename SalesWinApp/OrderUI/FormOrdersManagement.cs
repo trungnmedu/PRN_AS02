@@ -257,6 +257,8 @@ namespace SalesWinApp.OrderUI
                 if (DateTime.Compare(searchStartDate, searchEndDate) > 0)
                 {
                     (searchStartDate, searchEndDate) = (searchEndDate, searchStartDate);
+                    startDate.Value = searchStartDate;
+                    endDate.Value = searchEndDate;
                 }
                 List<Order> orders = orderRepository.GetAllOrderFilterByDate(searchStartDate, searchEndDate).ToList();
                 
@@ -294,6 +296,7 @@ namespace SalesWinApp.OrderUI
         }
         private DataTable ToDataTable<T>(IEnumerable<T> items)
         {
+            
             var table = CreateDataTable<T>();
             PropertyInfo[] propertyInfos = typeof(T).GetProperties();
 

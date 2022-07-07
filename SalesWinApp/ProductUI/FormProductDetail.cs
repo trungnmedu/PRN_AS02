@@ -84,7 +84,7 @@ namespace SalesWinApp.ProductUI
                         cboCategory.SelectedIndex = cboCategory.FindStringExact(ProductInfo.CategoryName);
                     }
                 }
-                else
+                if(IsMemberLogin)
                 {
                     btnAction.Text = @"&Add To Cart";
                     txtProductId.ReadOnly = true;

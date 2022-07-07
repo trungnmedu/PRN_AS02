@@ -166,7 +166,22 @@ namespace SalesWinApp.MemberUI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            if (IsAdminLogin)
+            {
+                Close();
+            }
+            if (IsMemberLogin)
+            {
+                FormProductsManagement formProductsManagement = new FormProductsManagement()
+                {
+                    IsMemberLogin = IsMemberLogin,
+                    IsAdminLogin = IsAdminLogin,
+                    MemberLogin = MemberInfo,
+                    MemberRepository = new MemberRepository()
+                };
+                formProductsManagement.Closed += (_, _) => Close();
+                formProductsManagement.Show();
+            }
         }
     }
 }

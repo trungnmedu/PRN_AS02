@@ -74,6 +74,8 @@ namespace SalesWinApp.OrderUI
                 Text = @"Member Details",
                 MemberInfo = LoginMember,
                 InsertOrUpdate = false,
+                IsAdminLogin = IsAdminLogin,
+                IsMemberLogin = IsMemberLogin,
                 MemberRepository = MemberRepository
             };
             frmMemberDetails.Closed += (_, _) => Close();
@@ -253,9 +255,10 @@ namespace SalesWinApp.OrderUI
                     FormProductsManagement frmProductsManagement = new FormProductsManagement
                     {
                         MemberLogin = LoginMember,
+                        IsAdminLogin = IsAdminLogin,
+                        IsMemberLogin = IsMemberLogin,
                         MemberRepository = MemberRepository,
                         CartRepository = CartRepository,
-
                     };
                     frmProductsManagement.Closed += (_, _) => Close();
                     Hide();
